@@ -1,0 +1,6 @@
+export * from './admin.types'
+export * from './attendance.types'
+export * from './auth.types'
+export * from './group.types'
+export * from './laboratory.types'
+export * from './student.types'
