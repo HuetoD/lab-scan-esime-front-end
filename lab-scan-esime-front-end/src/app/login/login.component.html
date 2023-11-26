@@ -1,0 +1,28 @@
+<main class="login">
+    <div class="login-div">
+        <h1>Inicia Sesión</h1>
+        <form class="login-form">
+            <mat-form-field class="input-login" appearance="outline">
+                <mat-label>Tu Correo</mat-label>
+                <input type="email" matInput>
+                <mat-icon matPrefix>
+                    <img src="assets/icono-correo.svg">
+                </mat-icon>
+            </mat-form-field>
+            <mat-form-field class="input-login" appearance="outline">
+                <mat-label>Tu Contraseña</mat-label>
+                <input type="password" matInput>
+                <mat-icon matPrefix>
+                    <img src="assets/icono-password.svg">
+                </mat-icon>
+            </mat-form-field>
+            <button type="submit" mat-raised-button color="primary" style="padding: 1.5rem 0;">
+                <mat-label>Iniciar Sesión</mat-label>
+            </button>
+
+            <a style="margin-top: 1rem;" routerLink="/recuperarCuenta" routerLinkActive="active" ariaCurrentWhenActive="page">Recupera tu
+                Contraseña</a>
+        </form>
+    </div>
+</main>
+<router-outlet></router-outlet>

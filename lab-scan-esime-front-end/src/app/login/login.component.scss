@@ -1,0 +1,20 @@
+.login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+.login-div{
+    border: 1px solid #000;
+    padding: 3rem 5rem;
+    border-radius: 2.5rem;
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+}
+.input-login{
+    min-width: 300px;
+}
