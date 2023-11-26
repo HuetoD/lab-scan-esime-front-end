@@ -1,2 +1,67 @@
-<p>laboratorios works!</p>
+<main class="contenedor">
+    <div>
+
+        <form action="" class="laboratorios-form">
+            <div>
+                <mat-form-field>
+                    <mat-label>Tipo de identificación</mat-label>
+                    <mat-select [(ngModel)]="selectedValue" name="documento">
+                        @for (documento of documentos; track documento) {
+                        <mat-option [value]="documento.value">{{documento.viewValue}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="input-login" appearance="outline">
+                    <mat-label>Nombre</mat-label>
+                    <input type="text" matInput>
+                    <mat-icon matPrefix style="margin-left: 1rem;">
+                        <img src="assets/icono-usuario.svg">
+                    </mat-icon>
+                </mat-form-field>
+                <mat-form-field class="input-login" appearance="outline">
+                    <mat-label>Nº de Computadora</mat-label>
+                    <input type="number" matInput>
+                    <mat-icon matPrefix style="margin-left: 1rem;">
+                        <img src="assets/icono-computadora.svg">
+                    </mat-icon>
+                </mat-form-field>
+                <mat-form-field class="input-login" appearance="outline">
+                    <mat-label>Grupo</mat-label>
+                    <input type="text" matInput>
+                    <mat-icon matPrefix style="margin-left: 1rem;">
+                        <img src="assets/icono-grupo.svg">
+                    </mat-icon>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field class="input-login" appearance="outline">
+                    <mat-label>Fecha</mat-label>
+                    <input type="date" matInput>
+                    <mat-icon matPrefix style="margin-left: 1rem;">
+                        <img src="assets/icono-calendario.svg">
+                    </mat-icon>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Elige el laboratorio</mat-label>
+                    <mat-select [(ngModel)]="selectedValue" name="laboratorio">
+                        @for (laboratorio of laboratorios; track laboratorio) {
+                        <mat-option [value]="laboratorio.value">{{laboratorio.viewValue}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="input-login" appearance="outline">
+                    <mat-label>Boleta</mat-label>
+                    <input type="text" matInput>
+                    <mat-icon matPrefix style="margin-left: 1rem;">
+                        <img src="assets/icono-boleta.svg">
+                    </mat-icon>
+                </mat-form-field>
+                <mat-form-field class="input-login" appearance="outline">
+                    <mat-label></mat-label>
+                    <textarea rows="3" value="El número de computadora asingado serú el mismo para los 2 laboratorios" matInput placeholder="Ex. It makes me feel..." disabled type="dynamic" (resize)="true"></textarea>
+                </mat-form-field>
+            </div>
+        </form>
+    </div>
+</main>
 <router-outlet></router-outlet>

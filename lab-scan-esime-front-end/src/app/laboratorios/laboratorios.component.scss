@@ -1,0 +1,20 @@
+.laboratorios-form{
+    padding: 5rem;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    div{
+        display: flex;
+        flex-direction: column;
+    }
+    gap: 3rem;
+    padding: 5rem 15rem;
+}
+.input-login{
+    min-width: 300px;
+    img{
+        width: 20px;
+    }
+}
+textarea{
+    resize: none;
+}

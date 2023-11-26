@@ -1,6 +1,6 @@
 <main class="login">
     <div class="login-div">
-        <h1>Inicia Sesión</h1>
+        <h1 style="color: var(--principal);">Inicia Sesión</h1>
         <form class="login-form">
             <mat-form-field class="input-login" appearance="outline">
                 <mat-label>Tu Correo</mat-label>
@@ -20,7 +20,7 @@
                 <mat-label>Iniciar Sesión</mat-label>
             </button>
 
-            <a style="margin-top: 1rem;" routerLink="/recuperarCuenta" routerLinkActive="active" ariaCurrentWhenActive="page">Recupera tu
+            <a style="margin-top: 1rem;color: var(--principal);" routerLink="/recuperarCuenta" routerLinkActive="active" ariaCurrentWhenActive="page">Recupera tu
                 Contraseña</a>
         </form>
     </div>
@@ -30,6 +30,8 @@
         Crear Cuentas</a>
         <a style="margin-top: 1rem; margin-left: 1rem;" routerLink="/laboratorios" routerLinkActive="active" ariaCurrentWhenActive="page">
             Laboratorios</a>
+            <a style="margin-top: 1rem; margin-left: 1rem;" routerLink="/newPassword" routerLinkActive="active" ariaCurrentWhenActive="page">
+                Nueva Contraseña (Arturo)</a>
     </div>
 </main>
 <router-outlet></router-outlet>
