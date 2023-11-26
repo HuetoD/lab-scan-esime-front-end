@@ -1,0 +1,21 @@
+.demo-table {
+    width: 100%;
+}
+
+.demo-button-container {
+    padding-bottom: 16px;
+}
+
+.demo-button+.demo-button {
+    margin-left: 8px;
+}
+.tabla{
+    padding: 5rem;
+}
+.mat-column-correo, .mat-column-password, .mat-column-edit{
+    text-align: center;
+    border-right: 1px solid #b6b6b6;
+}
+.mat-column-delete{
+    text-align: center;
+}
