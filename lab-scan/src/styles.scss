@@ -1,1 +1,63 @@
-/* You can add global styles to this file, and also import other style files */
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+//GAMA DE COLORES
+
+$my-primary-color: (
+    100 : #b7e8f5,
+    200 : #8adaed,
+    300 : #63cbe4,
+    400 : #4fc0db,
+    700 : #3c91a6,
+    800 : #367D8D,
+    contrast : (800 : #fff,
+    )
+);
+
+$my-accent-color: (
+    100 : #b7e8f5,
+    200 : #8adaed,
+    300 : #63cbe4,
+    400 : #4fc0db,
+    700 : #3c91a6,
+    800 : #367D8D,
+    contrast : (800 : #fff,
+    )
+);
+
+$my-warn-color: (
+    100 : #ffcdd1,
+    700 : #E02323,
+    contrast : (700 : #fff,
+    )
+);
+
+// PALETA DE COLORES
+
+$my-palette-primary: mat.define-palette($my-primary-color, 800);
+$my-palette-accent: mat.define-palette($my-accent-color, 800);
+$my-palette-warn: mat.define-palette($my-warn-color, 700);
+
+//TEMA
+
+$my-theme: mat.define-light-theme((color: (primary: $my-palette-primary,
+                accent: $my-palette-accent,
+                warn: $my-palette-warn )));
+
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($my-theme);
+
+* {
+    font-family: 'Montserrat', sans-serif;
+}
