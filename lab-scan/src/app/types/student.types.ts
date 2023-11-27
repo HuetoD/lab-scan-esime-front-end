@@ -9,13 +9,13 @@ export interface StudentBase {
     student_qr_code?: string
 }
 
-export interface StudentCreateRequest extends StudentBase {
+export interface StudentRequest extends StudentBase {
     sacadem_register_date?: Date
     groups: LabGroups[]
     photo?: string
 }   
 
-export interface Identification {
+export interface IdentificationResponse {
     number_id: number
     name: string
 }

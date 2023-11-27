@@ -1,4 +1,4 @@
-import { GroupResponse } from "."
+import { GroupResponse as GroupDTO } from "."
 
 export interface LaboratoryDTO {
     lab_id: number
@@ -6,5 +6,5 @@ export interface LaboratoryDTO {
 }
 
 export interface LabGroups {
-    [key: string] : GroupResponse[]
+    [key: string] : GroupDTO[]
 }
