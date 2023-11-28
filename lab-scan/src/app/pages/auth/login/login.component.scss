@@ -20,7 +20,7 @@
       padding: 10px;
       border: 2px solid #ccc;
       border-radius: 5px;
-      
+  
       label {
         display: block;
         margin-bottom: 5px;
@@ -33,19 +33,13 @@
       }
     }
   
-    .login-button,
-    .forgot-password {
+    .button-container {
+      display: flex;
+      flex-direction: column;
       width: 100%;
-    }
-  
-    .login-button {
-      margin-top: 20px;
-    }
-  
-    .forgot-password {
-      color: grey;
-      margin-top: 10px;
-      cursor: pointer;
+      button {
+        margin-top: 8px;
+      }
     }
   
     &:after {
@@ -57,3 +51,7 @@
       margin-top: 20px;
     }
   }
+  
+  
+  
+  

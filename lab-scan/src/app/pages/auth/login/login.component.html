@@ -1,13 +1,17 @@
-<div class="login-container">
+<form class="login-container">
     <p class="login-heading">Inicio de Sesión</p>
-    <mat-form-field class="login-field">
-      <label>Correo</label>
-      <input matInput placeholder="Ingresar Correo" />
+    <mat-form-field>
+        <mat-label>Correo</mat-label>
+        <input matInput placeholder="Ingresar Correo" />
     </mat-form-field>
-    <mat-form-field class="login-field">
-      <label>Contraseña</label>
-      <input matInput type="password" placeholder="Ingresar Contraseña" />
+    <mat-form-field>
+        <mat-label>Contraseña</mat-label>
+        <input matInput type="password" placeholder="Ingresar Contraseña" />
     </mat-form-field>
-    <button mat-raised-button color="primary" class="login-button">Ingresar</button>
-    <button mat-button class="forgot-password">Recuperar Contraseña</button>
-  </div>
+    <div class="button-container">
+        <button>Ingresar</button>
+        <button>Recuperar Contraseña</button>
+    </div>
+</form>
+
+
