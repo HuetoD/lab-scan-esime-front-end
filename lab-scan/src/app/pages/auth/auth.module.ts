@@ -3,23 +3,19 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { LoginComponent } from "./login/login.component";
-import { BrowserModule } from "@angular/platform-browser";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { AuthRouting } from "./auth-routing.module";
+import { CommonModule } from "@angular/common";
+import { ResetPasswordComponent } from "./reset-password/reset-password.component";
 
-const declarations_exports = [
-    LoginComponent
-]
 
 @NgModule({
     declarations: [
-        ...declarations_exports
-    ],
-    exports: [
-        ...declarations_exports
+        LoginComponent,
+        ResetPasswordComponent,
     ],
     imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
+        AuthRouting,
+        CommonModule,
         MatFormFieldModule,
         MatInputModule,
         MatButtonModule

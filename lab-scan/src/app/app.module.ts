@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AuthModule } from './pages/auth/auth.module';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -15,6 +16,7 @@ import { AuthModule } from './pages/auth/auth.module';
     AppComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
