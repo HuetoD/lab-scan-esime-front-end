@@ -8,12 +8,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AuthModule } from './pages/auth/auth.module';
 import { CommonModule } from '@angular/common';
+import { SuperuserModule } from './superuser/superuser.module';
+import { RouterModule } from '@angular/router';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     CommonModule,
@@ -22,6 +24,8 @@ import { CommonModule } from '@angular/common';
     BrowserAnimationsModule,
     FeatureModule,
     AuthModule,
+    SuperuserModule,
+    RouterModule.forRoot([]),
   ],
   providers: [],
   bootstrap: [AppComponent]

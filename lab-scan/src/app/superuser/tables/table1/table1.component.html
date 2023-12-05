@@ -1,0 +1,34 @@
+<button mat-raised-button color="primary" (click)="crearFila()" class="boton-crear">Crear</button>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="correo">
+      <th mat-header-cell *matHeaderCellDef> Correo </th>
+      <td mat-cell *matCellDef="let element"> {{ element.correo }} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="contrasena">
+      <th mat-header-cell *matHeaderCellDef> Contraseña </th>
+      <td mat-cell *matCellDef="let element"> {{ element.contrasena }} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="editar">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-raised-button color="primary" (click)="editarFila(element)">Editar</button>
+      </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="eliminar">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-raised-button color="warn" (click)="eliminarFila(element)">Eliminar</button>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+</table>
+
+
+  
+  
