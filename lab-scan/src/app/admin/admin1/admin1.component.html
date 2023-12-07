@@ -1,0 +1,43 @@
+<!-- admin1.component.html -->
+
+<table mat-table [dataSource]="datos">
+
+    <!-- Definición de columnas existentes -->
+    <!-- No. Computadora Column -->
+    <ng-container matColumnDef="noComputadora">
+      <th mat-header-cell *matHeaderCellDef>No. Computadora</th>
+      <td mat-cell *matCellDef="let elemento">{{ elemento.noComputadora }}</td>
+    </ng-container>
+  
+    <!-- Tipo de identificación Column -->
+    <ng-container matColumnDef="tipoIdentificacion">
+      <th mat-header-cell *matHeaderCellDef>Tipo de identificación</th>
+      <td mat-cell *matCellDef="let elemento">{{ elemento.tipoIdentificacion }}</td>
+    </ng-container>
+  
+    <!-- Nombre del alumno Column -->
+    <ng-container matColumnDef="nombreAlumno">
+      <th mat-header-cell *matHeaderCellDef>Nombre del alumno</th>
+      <td mat-cell *matCellDef="let elemento">{{ elemento.nombreAlumno }}</td>
+    </ng-container>
+  
+    <!-- Observaciones Column -->
+    <ng-container matColumnDef="observaciones">
+      <th mat-header-cell *matHeaderCellDef>Observaciones</th>
+      <td mat-cell *matCellDef="let elemento">{{ elemento.observaciones }}</td>
+    </ng-container>
+  
+    <!-- Asistencia Column -->
+    <ng-container matColumnDef="asistencia">
+      <th mat-header-cell *matHeaderCellDef>Asistencia</th>
+      <td mat-cell *matCellDef="let elemento">
+        <mat-checkbox [(ngModel)]="elemento.asistencia"></mat-checkbox>
+      </td>
+    </ng-container>
+  
+    <!-- Definición de filas -->
+    <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+  </table>
+  
+  

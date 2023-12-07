@@ -10,7 +10,7 @@ import { AuthModule } from './pages/auth/auth.module';
 import { CommonModule } from '@angular/common';
 import { SuperuserModule } from './superuser/superuser.module';
 import { RouterModule } from '@angular/router';
-
+import { AdminModule } from './admin/admin.module';
 
 
 @NgModule({
@@ -25,6 +25,7 @@ import { RouterModule } from '@angular/router';
     FeatureModule,
     AuthModule,
     SuperuserModule,
+    AdminModule,
     RouterModule.forRoot([]),
   ],
   providers: [],
