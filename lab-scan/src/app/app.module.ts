@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 import { SuperuserModule } from './superuser/superuser.module';
 import { RouterModule } from '@angular/router';
 import { AdminModule } from './admin/admin.module';
+import { GuestModule } from './guest/guest.module';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { AdminModule } from './admin/admin.module';
     AuthModule,
     SuperuserModule,
     AdminModule,
+    GuestModule,
     RouterModule.forRoot([]),
   ],
   providers: [],
