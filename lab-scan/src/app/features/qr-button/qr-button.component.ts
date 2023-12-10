@@ -6,7 +6,7 @@ import { BehaviorSubject } from "rxjs";
 @Component({
     selector: 'feature-qr-button',
     templateUrl: './qr-button.component.html',
-    styleUrls: ['./qr-button.component.scss']
+    styleUrls: ['./qr-button.component.scss'],
 })
 export class QrButtonComponent implements OnInit {
 

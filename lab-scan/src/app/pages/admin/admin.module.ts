@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Admin1Component } from './admin1/admin1.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { MatTableModule } from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
-    Admin1Component
+    AdminComponent
   ],
   imports: [
     AdminRoutingModule,
@@ -18,7 +18,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatCheckboxModule
   ],
   exports: [
-    Admin1Component
+    AdminComponent
   ]
 })
 export class AdminModule { }

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-admin1',
-  templateUrl: './admin1.component.html',
-  styleUrls: ['./admin1.component.scss']
+  selector: 'app-admin',
+  templateUrl: './admin.component.html',
+  styleUrls: ['./admin.component.scss']
 })
-export class Admin1Component implements OnInit {
+export class AdminComponent implements OnInit {
   datos: any[] = [];
   columnas: string[] = ['noComputadora', 'tipoIdentificacion', 'nombreAlumno', 'observaciones', 'asistencia'];
 

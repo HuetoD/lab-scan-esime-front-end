@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { Table1Component } from './tables/table1/table1.component';
+import { TableComponent } from './tables/table/table.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'table1', pathMatch: 'full'},
-  { path: 'table1', component: Table1Component },
+  { path: '', component: TableComponent },
 ];
 
 @NgModule({

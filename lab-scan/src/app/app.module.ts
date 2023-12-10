@@ -8,10 +8,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AuthModule } from './pages/auth/auth.module';
 import { CommonModule } from '@angular/common';
-import { SuperuserModule } from './superuser/superuser.module';
 import { RouterModule } from '@angular/router';
-import { AdminModule } from './admin/admin.module';
-import { GuestModule } from './guest/guest.module';
+import { AdminModule } from './pages/admin/admin.module';
+import { GuestModule } from './pages/guest/guest.module';
+import { SuperuserModule } from './pages/superuser/superuser.module';
 
 
 @NgModule({
