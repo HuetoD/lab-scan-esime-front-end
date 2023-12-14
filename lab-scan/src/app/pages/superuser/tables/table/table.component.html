@@ -1,89 +1,85 @@
-<button
-  mat-raised-button
-  color="primary"
-  (click)="crearFila()"
-  class="boton-crear"
-  [disabled]="selectedUser !== undefined"
->
-  Crear
+<button mat-raised-button color="primary" (click)="crearFila()" class="boton-crear"
+    [disabled]="selectedUser !== undefined">
+    Crear
 </button>
 
-<table mat-table [dataSource]="dataSource">
-  <ng-container matColumnDef="email">
-    <th mat-header-cell *matHeaderCellDef>Correo</th>
-    <td mat-cell *matCellDef="let user">
-      <ng-container *ngIf="selectedUser !== user; else editMode" >
-        {{ user.email }}
-      </ng-container>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z6">
+    <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Correo</th>
+        <td mat-cell *matCellDef="let user">
+            <ng-container *ngIf="selectedUser !== user; else editMode">
+                {{ user.email }}
+            </ng-container>
 
-      <ng-template #editMode >
-        <mat-form-field [appearance]="'outline'" style=" margin-bottom: -1.25em">
-          <input matInput type="text" [formControl]="control('email')" />
-        </mat-form-field>
-      </ng-template>
-      </td
-  ></ng-container>
+            <ng-template #editMode>
+                <mat-form-field [appearance]="'outline'" style=" margin-bottom: -1.25em">
+                    <input matInput type="text" [formControl]="control('email')" autocomplete="off" />
+                </mat-form-field>
+            </ng-template>
+        </td>
+    </ng-container>
 
-  <ng-container matColumnDef="password">
-    <th mat-header-cell *matHeaderCellDef>Contraseña</th>
-    <td mat-cell *matCellDef="let user">
+    <ng-container matColumnDef="password">
+        <th mat-header-cell *matHeaderCellDef>Contraseña</th>
+        <td mat-cell *matCellDef="let user">
 
-      <ng-container *ngIf="selectedUser !== user; else editMode" >
-        {{ user.password }}
-      </ng-container>
+            <ng-container *ngIf="selectedUser !== user; else editMode">
+                {{ user.password }}
+            </ng-container>
 
-      <ng-template #editMode >
-        <mat-form-field [appearance]="'outline'" style=" margin-bottom: -1.25em">
-          <input matInput type="password"  [formControl]="control('password')"/>
-        </mat-form-field>
-      </ng-template>
-
-
-    </td>
-  </ng-container>
-
-  <ng-container matColumnDef="edit">
-    <th class="button-column" mat-header-cell *matHeaderCellDef></th>
-    <td class="button-column" mat-cell *matCellDef="let user">
-
-      <ng-container *ngIf="selectedUser !== user; else editMode" >
-        <button mat-raised-button color="primary" (click)="edit(user)" [disabled]="selectedUser !== undefined" >
-          Editar
-        </button>
-      </ng-container>
-
-      <ng-template #editMode >
-        <button mat-raised-button color="primary" (click)="sendEdit()">
-          Aceptar
-        </button>
-      </ng-template>
+            <ng-template #editMode>
+                <mat-form-field [appearance]="'outline'" style=" margin-bottom: -1.25em">
+                    <input matInput type="password" [formControl]="control('password')" />
+                </mat-form-field>
+            </ng-template>
 
 
-      
-    </td>
-  </ng-container>
+        </td>
+    </ng-container>
 
-  <ng-container matColumnDef="delete">
-    <th class="button-column" mat-header-cell *matHeaderCellDef></th>
-    <td class="button-column" mat-cell *matCellDef="let user">
+    <ng-container matColumnDef="edit">
+        <th class="button-column" mat-header-cell *matHeaderCellDef></th>
+        <td class="button-column" mat-cell *matCellDef="let user">
 
-      <ng-container *ngIf="selectedUser !== user; else editMode" >
-        <button mat-raised-button color="warn" (click)="deleteRow(user)" [disabled]="selectedUser !== undefined">
-          Eliminar
-        </button>
-      </ng-container>
+            <ng-container *ngIf="selectedUser !== user; else editMode">
+                <button mat-raised-button color="primary" (click)="edit(user)" [disabled]="selectedUser !== undefined">
+                    Editar
+                </button>
+            </ng-container>
 
-      <ng-template #editMode >
-        <button mat-raised-button color="primary" color="warn" (click)="cancelEdit()">
-          Cancelar
-        </button>
-      </ng-template>
+            <ng-template #editMode>
+                <button mat-raised-button color="primary" (click)="sendEdit()">
+                    Aceptar
+                </button>
+            </ng-template>
 
 
-      
-    </td>
-  </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="columnas"></tr>
-  <tr mat-row *matRowDef="let row; columns: columnas"></tr>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+        <th class="button-column" mat-header-cell *matHeaderCellDef></th>
+        <td class="button-column" mat-cell *matCellDef="let user">
+
+            <ng-container *ngIf="selectedUser !== user; else editMode">
+                <button mat-raised-button color="warn" (click)="deleteRow(user)"
+                    [disabled]="selectedUser !== undefined">
+                    Eliminar
+                </button>
+            </ng-container>
+
+            <ng-template #editMode>
+                <button mat-raised-button color="primary" color="warn" (click)="cancelEdit()">
+                    Cancelar
+                </button>
+            </ng-template>
+
+
+
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnas"></tr>
 </table>
