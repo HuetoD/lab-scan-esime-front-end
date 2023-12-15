@@ -64,6 +64,20 @@
                   "with": "src/environments/environment.development.ts"
                 }
               ]
+            },
+            "basic": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.basic.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -76,6 +90,9 @@
             },
             "development": {
               "browserTarget": "lab-scan:build:development"
+            },
+            "basic": {
+              "browserTarget": "lab-scan:build:basic"
             }
           },
           "defaultConfiguration": "development"

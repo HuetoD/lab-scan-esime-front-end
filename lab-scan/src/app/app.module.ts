@@ -12,11 +12,15 @@ import { RouterModule } from '@angular/router';
 import { AdminModule } from './pages/admin/admin.module';
 import { GuestModule } from './pages/guest/guest.module';
 import { SuperuserModule } from './pages/superuser/superuser.module';
+import { LoaderComponent } from './features/loader/loader.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoadingInterceptor } from './interceptors/http.interceptor';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    LoaderComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +34,11 @@ import { SuperuserModule } from './pages/superuser/superuser.module';
     GuestModule,
     RouterModule.forRoot([]),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
