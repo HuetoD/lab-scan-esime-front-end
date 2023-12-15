@@ -1,0 +1,129 @@
+<div class="first-line">
+    <p>6CV25</p>
+    <button mat-button>Editar registro</button>
+    <button mat-button>Exportar</button>
+    <button mat-button>Nuevo registro</button>
+  </div>
+  
+  <div class="line-spacing"></div>
+
+  <div class="second-line">
+  <mat-form-field class="second-line-element">
+    <mat-label>Semestre</mat-label>
+    <mat-select placeholder="Selecciona un semestre">
+      <mat-option value="2021-1">2021-1</mat-option>
+      <mat-option value="2021-2">2021-2</mat-option>
+      <mat-option value="2022-1">2022-1</mat-option>
+      <mat-option value="2022-2">2022-2</mat-option>
+      <mat-option value="2023-1">2023-1</mat-option>
+      <mat-option value="2023-2">2023-2</mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+  <mat-form-field class="second-line-element">
+    <mat-label>Grupos</mat-label>
+    <mat-select placeholder="Selecciona un grupo">
+      <mat-option value="1CM11">1CM11</mat-option>
+      <mat-option value="1CV11">1CV11</mat-option>
+      <mat-option value="2CM11">2CM11</mat-option>
+      <mat-option value="2CV11">2CV11</mat-option>
+      <mat-option value="3CM11">3CM11</mat-option>
+      <mat-option value="3CV11">3CV11</mat-option>
+      <mat-option value="4CM11">4CM11</mat-option>
+      <mat-option value="4CV11">4CV11</mat-option>
+      <mat-option value="5CM11">5CM11</mat-option>
+      <mat-option value="5CV11">5CV11</mat-option>
+      <mat-option value="6CM11">6CM11</mat-option>
+      <mat-option value="6CV11">6CV11</mat-option>
+      <mat-option value="7CM11">7CM11</mat-option>
+      <mat-option value="7CV11">7CV11</mat-option>
+      <mat-option value="8CM11">8CM11</mat-option>
+      <mat-option value="8CV11">8CV11</mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+  <mat-form-field class="second-line-element">
+    <input matInput [matDatepicker]="picker" placeholder="Selecciona una fecha">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  
+  <mat-form-field class="second-line-element">
+    <input matInput placeholder="Alumnos">
+  </mat-form-field>
+  </div>
+
+  <table mat-table [dataSource]="datos" class="vertical-spacing">
+    <!-- No. Computadora Column -->
+    <ng-container matColumnDef="noComputadora">
+      <th mat-header-cell *matHeaderCellDef>No. Computadora</th>
+      <td mat-cell *matCellDef="let elemento">{{ elemento.noComputadora }}</td>
+    </ng-container>
+  
+    <!-- Boleta Column -->
+    <ng-container matColumnDef="boleta">
+      <th mat-header-cell *matHeaderCellDef>Boleta</th>
+      <td mat-cell *matCellDef="let elemento">{{ elemento.boleta }}</td>
+    </ng-container>
+  
+    <!-- Tipo de identificación Column -->
+    <ng-container matColumnDef="tipoIdentificacion">
+      <th mat-header-cell *matHeaderCellDef>Tipo de identificación</th>
+      <td mat-cell *matCellDef="let elemento">{{ elemento.tipoIdentificacion }}</td>
+    </ng-container>
+  
+    <!-- Nombre del alumno Column -->
+    <ng-container matColumnDef="nombreAlumno">
+      <th mat-header-cell *matHeaderCellDef>Nombre del alumno</th>
+      <td mat-cell *matCellDef="let elemento">{{ elemento.nombreAlumno }}</td>
+    </ng-container>
+  
+    <!-- Observaciones Column -->
+    <ng-container matColumnDef="observaciones">
+      <th mat-header-cell *matHeaderCellDef>Observaciones</th>
+      <td mat-cell *matCellDef="let elemento">{{ elemento.observaciones }}</td>
+    </ng-container>
+  
+    <!-- Asistencia Column -->
+    <ng-container matColumnDef="asistencia">
+      <th mat-header-cell *matHeaderCellDef>Asistencia</th>
+      <td mat-cell *matCellDef="let elemento">
+        <mat-checkbox [(ngModel)]="elemento.asistencia"></mat-checkbox>
+      </td>
+    </ng-container>
+  
+    <!-- Acciones Column -->
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-menu #accionesMenu="matMenu">
+          <button mat-menu-item>Edita invitado</button>
+          <button mat-menu-item>Elimina invitado</button>
+          <button mat-menu-item>Intercambia invitado</button>
+        </mat-menu>
+        <button mat-icon-button [matMenuTriggerFor]="accionesMenu">
+          Acciones
+          <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+      </th>
+      <td mat-cell *matCellDef="let elemento"></td>
+    </ng-container>
+  
+    <!-- Definición de filas -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+  <mat-paginator [length]="datosPaginados.data.length"
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 25, 100]"
+  [showFirstLastButtons]="true"
+  class="mat-paginator-icon-only"></mat-paginator>
+
+
+
+
+
+
+  
+  
+
