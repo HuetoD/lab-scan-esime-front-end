@@ -1,15 +1,16 @@
-<form class="login-container">
+<form class="login-container" [formGroup]="loginForm" (submit)="login()">
     <p class="login-heading">Inicio de Sesión</p>
     <mat-form-field appearance="outline">
         <mat-label>Correo</mat-label>
-        <input matInput placeholder="Ingresar Correo" autocomplete="off" />
+        <input matInput placeholder="Ingresar Correo" formControlName="email" autocomplete="off" />
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Contraseña</mat-label>
-        <input matInput type="password" placeholder="Ingresar Contraseña" autocomplete="off" />
+        <input matInput type="password" placeholder="Ingresar Contraseña" formControlName="password"
+            autocomplete="off" />
     </mat-form-field>
     <div class="button-container">
-        <button mat-raised-button color="primary">Ingresar</button>
-        <button mat-raised-button>Recuperar Contraseña</button>
+        <button mat-raised-button color="primary" type="submit">Ingresar</button>
+        <button mat-raised-button (click)="navigateToResetPassword()">Recuperar Contraseña</button>
     </div>
 </form>
