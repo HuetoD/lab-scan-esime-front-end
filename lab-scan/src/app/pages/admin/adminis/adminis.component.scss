@@ -1,0 +1,20 @@
+.first-line {
+    display: flex;
+    gap: 5rem;
+    margin-top: 10px;
+  }
+  
+  .line-spacing {
+    margin-bottom: 20px; 
+  }
+  
+  .second-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px; 
+  }
+  
+  .second-line-element {
+    margin-right: 10px; 
+  }
