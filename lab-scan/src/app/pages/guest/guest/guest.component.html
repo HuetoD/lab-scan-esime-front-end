@@ -1,65 +1,78 @@
-<div class="grid">
-  <div>
-    <p>Tipo de identificación</p>
-    <mat-form-field>
-      <mat-select placeholder="ID">
-        <mat-option value="identificacion">Identificación</mat-option>
-        <mat-option value="prorroga">Prórroga</mat-option>
-        <mat-option value="sacadem">Sacadem</mat-option>
-      </mat-select>
+<form class="grid" [formGroup]="partialStudentForm" (submit)="submit()">
+    <div>
+        <p>Tipo de identificación</p>
+        <mat-form-field>
+            <mat-select #identifierSelect placeholder="ID" (selectionChange)="onIdentifierChange($event.value)">
+                <mat-option *ngFor="let identifier of identifiers" [value]="identifier">{{identifier}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <mat-form-field *ngIf="showSacademDate">
+        <input matInput [matDatepicker]="picker" />
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-  </div>
 
-  <mat-form-field>
-    <input matInput [matDatepicker]="picker" />
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
+    <div>
+        <p>Nombre</p>
+        <mat-form-field>
+            <mat-label>Nombre completo</mat-label>
+            <input matInput placeholder="Ingrese el nombre" formControlName="student_full_name" />
+        </mat-form-field>
+    </div>
 
-  <div>
-    <p>Nombre</p>
     <mat-form-field>
-      <mat-label>Nombre</mat-label>
-      <input matInput placeholder="Ingrese el nombre" />
+        <mat-label>Número de documento ({{student.student_identification_type}})</mat-label>
+        <input matInput placeholder="Ingrese su número de boleta" formControlName="student_report_number" />
     </mat-form-field>
-  </div>
 
-  <mat-form-field>
-    <mat-select placeholder="Elige el laboratorio">
-      <mat-option value="laboratorio1">Laboratorio 1</mat-option>
-      <mat-option value="laboratorio2">Laboratorio 2</mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <div>
-    <p>No. Computadora</p>
     <mat-form-field>
-      <mat-label>No. Computadora</mat-label>
-      <input matInput placeholder="Ingrese el número de computadora" />
+        <mat-select placeholder="Elige el laboratorio" (selectionChange)="onLabChange($event.value)">
+            <mat-option *ngFor="let lab of labs" [value]="lab">{{lab.lab_name}}</mat-option>
+        </mat-select>
     </mat-form-field>
-  </div>
 
-  <div class="button-container flex f-a-center">
+    <div>
+        <p>No. Computadora</p>
+        <mat-form-field>
+            <mat-label>No. Computadora</mat-label>
+            <input matInput placeholder="Ingrese el número de computadora" formControlName="student_pc_number" />
+        </mat-form-field>
+    </div>
 
-    <feature-qr-button/>
-  </div>
+    <div class="button-container flex f-a-center" *ngIf="showQrCode">
+        <feature-qr-button />
+    </div>
 
-  <div>
-    <p>Grupo</p>
-    <mat-form-field>
-      <mat-label>Grupo</mat-label>
-      <input matInput placeholder="Ingrese el grupo" />
-    </mat-form-field>
-  </div>
+    <div>
+        <p>Grupos</p>
+        <mat-form-field>
+            <mat-chip-grid #chipList>
+                <mat-chip *ngFor="let selected of allSelectedGroups" [removable]="true"
+                    (removed)="onRemoveSelectedGroup(selected)">
+                    {{selected.group_name}}
+                    <mat-icon matChipRemove>cancel</mat-icon>
+                </mat-chip>
+                <input placeholder="Nuevo grupo..." [formControl]="groupForm" [matAutocomplete]="auto"
+                    [matChipInputFor]="chipList">
+            </mat-chip-grid>
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSelectedGroup($event.option.value)">
+                <mat-option *ngFor="let group of currentGroups" [value]="group">
+                    {{group.group_name}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
 
-  <div class="note flex f-a-center, f-j-center">
-    <p>
-      Nota: El número de computadoras asignado será el mismo para ambos
-      laboratorios
-    </p>
-  </div>
+    </div>
 
-  
+    <div class="note flex f-a-center, f-j-center">
+        <p>
+            Nota: El número de computadoras asignado será el mismo para ambos
+            laboratorios
+        </p>
+    </div>
 
+    <button mat-raised-button color="primary" type="submit">{{doneButtonName}}</button>
 
-</div>
+</form>

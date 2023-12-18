@@ -22,6 +22,7 @@ export class AuthInterceptor implements HttpInterceptor {
                 this.navigateToLogin()
             else
                 request = this.setTokenInHeader(request)
+        console.log('request: ', request)
         return next.handle(request).pipe(
             catchError((error: HttpErrorResponse) => {
                 if (error)
@@ -37,7 +38,7 @@ export class AuthInterceptor implements HttpInterceptor {
         return request.clone({
             withCredentials: true,
             setHeaders: {
-                Authorization: environment.bearer_name.concat(this.authService._token),
+                "Authorization": environment.bearer_name.concat(this.authService._token),
                 "Content-Type": "application/json; charset=utf-8",
             },
         });

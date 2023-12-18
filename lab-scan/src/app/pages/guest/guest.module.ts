@@ -8,25 +8,33 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { FeatureModule } from 'src/app/features/feature.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
-  declarations: [
-    GuestComponent
-  ],
-  imports: [
-    GuestRoutingModule,
-    CommonModule,
-
-    FeatureModule,
-
-    MatFormFieldModule,
-    MatSelectModule,
-    MatInputModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-  ],
-  exports: [
-    GuestComponent
-  ],
+    declarations: [
+        GuestComponent
+    ],
+    imports: [
+        GuestRoutingModule,
+        CommonModule,
+        MatButtonModule,
+        FeatureModule,
+        ReactiveFormsModule,
+        MatIconModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatInputModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatChipsModule,
+        MatAutocompleteModule
+    ],
+    exports: [
+        GuestComponent
+    ],
 })
-export class GuestModule {}
+export class GuestModule { }
