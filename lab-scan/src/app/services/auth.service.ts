@@ -42,8 +42,11 @@ export class AuthService {
         localStorage.removeItem(environment.header_token_name)
     }
 
-    public resetPassowrd(request: LoginRequest): Observable<string> {
-        request.password = request.password === '' ? null : request.password
+    public resetPassowrd(request: LoginRequest | string): Observable<string> {
+        if (typeof request !== 'string')
+            request.password = request.password === '' ? null : request.password
+        else
+            return this.resetPassowrd({ email: request, password: null })
         return this.http.post(`${this.API}/reset-password`, request, { responseType: 'text' })
     }
 

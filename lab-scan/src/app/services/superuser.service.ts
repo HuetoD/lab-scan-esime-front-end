@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'any' })
 export class AdminService {
-  private readonly BASE_URL_API = `${environment.api_url}/admin`;
+  private readonly BASE_URL_API = `${environment.api_url}/superuser`;
 
   constructor(private readonly http: HttpClient) {}
 
