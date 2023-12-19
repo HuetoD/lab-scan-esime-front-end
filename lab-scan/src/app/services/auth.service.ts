@@ -4,6 +4,8 @@ import { LoginRequest } from "../types";
 import { Observable, map, tap } from "rxjs";
 import { environment } from "src/environments/environment";
 import { JwtHelperService } from "@auth0/angular-jwt";
+import { Token } from "../types/token.types";
+import { RoleEnum } from "@shared/constants/roles.enum";
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -64,6 +66,15 @@ export class AuthService {
     public get _token(): string | null {
         this.loadToken()
         return this.token
+    }
+
+    public decodeToken(): Token | null {
+        const token = this._token
+        return !token ? null : this.jwtHelper.decodeToken(token)
+    }
+
+    public hasRole(roles: RoleEnum[]): boolean {
+        return this.decodeToken()?.roles?.some(r => roles.includes(r))
     }
 
     private loadToken(): void {

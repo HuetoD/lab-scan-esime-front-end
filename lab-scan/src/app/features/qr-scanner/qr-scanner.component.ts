@@ -1,8 +1,10 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, EventEmitter, Inject, Input, OnInit, ViewChild } from "@angular/core";
+import { StudentRequest } from "../../types";
 import { BarcodeFormat } from "@zxing/library";
 import { ZXingScannerComponent } from "@zxing/ngx-scanner";
-import { BehaviorSubject, catchError, tap } from "rxjs";
-import { StudentService } from "src/app/services/student.service";
+import { BehaviorSubject, Subject, catchError, tap } from "rxjs";
+import { GuestService } from "src/app/services/guest.service";
+import { MAT_DIALOG_DATA } from "@angular/material/dialog";
 
 @Component({
     selector: 'feature-qr-scanner',
@@ -19,16 +21,16 @@ export class QrScannerComponent implements OnInit {
     qrResultString: string | null = null
     torchAvailable$ = new BehaviorSubject<boolean>(false);
 
-    console: any[] = []
-
     @ViewChild(ZXingScannerComponent) private scanner: ZXingScannerComponent | null = null
 
     error: any
 
-    constructor(private readonly studentService: StudentService) { }
+    constructor(
+        private readonly guestService: GuestService,
+        @Inject(MAT_DIALOG_DATA) private readonly emitter$: EventEmitter<StudentRequest>
+    ) { }
 
     ngOnInit(): void {
-        this.console.push('Iniciando')
     }
 
     // handleClick() {
@@ -38,13 +40,10 @@ export class QrScannerComponent implements OnInit {
     // }
 
     onCamerasFound(devices: MediaDeviceInfo[]): void {
-        this.console.push(`[Cameras found]: ${devices}`)
-        //this.availableDevices = devices;
         this.hasDevices = Boolean(devices && devices.length);
     }
 
     onCamerasNotFound($event: any) {
-        this.console.push(`Error: ${$event}`)
         this.error = $event
     }
 
@@ -54,7 +53,6 @@ export class QrScannerComponent implements OnInit {
     }
 
     onHasPermission(has: boolean) {
-        this.console.push(`[Permiso]: ${has}`)
         this.hasPermission = has;
     }
 
@@ -65,8 +63,6 @@ export class QrScannerComponent implements OnInit {
     clearResult() {
         this.qrResultString = null
     }
-
-    get _console() { return this.console }
 
     get formatsEnabled(): BarcodeFormat[] {
         return [
@@ -84,12 +80,8 @@ export class QrScannerComponent implements OnInit {
 
     callApi() {
         this.parseQrCode()
-        this.studentService.findStudent(this.qrResultString!).pipe(
-            tap(response => this.console.push(`[Estudiante]: ${JSON.stringify(response)}`)),
-            catchError(err => {
-                this.console.push(`[Error]: ${JSON.stringify(err)}`)
-                return err
-            })
+        this.guestService.findStudentByQrCode(this.qrResultString!).pipe(
+            tap(response => this.emitter$.emit(response))
         ).subscribe()
     }
 

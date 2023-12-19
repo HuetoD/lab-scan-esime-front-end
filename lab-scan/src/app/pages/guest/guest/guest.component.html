@@ -42,7 +42,7 @@
     </div>
 
     <div class="button-container flex f-a-center" *ngIf="showQrCode">
-        <feature-qr-button />
+        <feature-qr-button [multi]="false" (onResult)="_student = $event" />
     </div>
 
     <div>

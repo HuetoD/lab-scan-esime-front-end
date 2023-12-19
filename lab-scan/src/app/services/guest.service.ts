@@ -55,6 +55,14 @@ export class GuestService {
         return this.http.put(`${this.API}/update-student`, this.refactor(student), { responseType: 'text' })
     }
 
+    findStudentByQrCode(qr_code: string) {
+        return this.http.get<StudentRequest>(`${this.API}/find-student-by-qr`, { params: { qr_code } }).pipe(
+            tap(response => {
+                response.groups = new Map<string, GroupResponse[]>(Object.entries(response.groups))
+            })
+        )
+    }
+
     findByStudentReportNumber(reportNumber: string): Observable<StudentRequest> {
         return this.http.get<StudentRequest>(`${this.API}/find-student-by-report-number`, { params: { reportNumber } }).pipe(
             tap(response => {

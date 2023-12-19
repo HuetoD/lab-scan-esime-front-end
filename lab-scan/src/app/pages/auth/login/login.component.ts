@@ -4,6 +4,8 @@ import { LoginRequest } from '../../../types';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { RoleEnum } from '@shared/constants/roles.enum';
+import { from, switchMap } from 'rxjs';
 
 @Component({
     selector: 'app-login',
@@ -29,13 +31,21 @@ export class LoginComponent implements OnInit {
     }
 
     login(): void {
-        if (this.loginForm.valid) {
-            this.authService.login(this.loginForm.value).subscribe()
-        }
+        if (this.loginForm.valid)
+            this.authService.login(this.loginForm.value).pipe(
+                switchMap(_ => {
+                    const has = (role: RoleEnum) => this.authService.hasRole([role])
+                    return from(this.router.navigate([has(RoleEnum.ADMIN) ? 'admin' : 'superuser']))
+                })
+            ).subscribe()
     }
 
     navigateToResetPassword(): void {
         this.router.navigate(['auth/reset-password'])
+    }
+
+    navigateToGuestModule(): void {
+        this.router.navigate(['guest/'])
     }
 
 }

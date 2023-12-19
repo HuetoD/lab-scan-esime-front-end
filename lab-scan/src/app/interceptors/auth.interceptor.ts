@@ -45,7 +45,7 @@ export class AuthInterceptor implements HttpInterceptor {
     }
 
     private isRequestOnPubliUrl(request: HttpRequest<any>): boolean {
-        return PUBLIC_URLS.find(url => request.url.includes(url)) !== undefined
+        return PUBLIC_URLS.find(url => request.url.includes(!url.includes("**") ? url : url.split('/')[0])) !== undefined
     }
 
     private parse(error: HttpErrorResponse): string {

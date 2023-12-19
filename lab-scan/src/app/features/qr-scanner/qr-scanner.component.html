@@ -1,7 +1,3 @@
-<!-- THIS HTML IS ONLY FOR TESTING, IT WILL BE REMOVED -->
-<!-- <button mat-raised-button color="primary" (click)="handleClick()">
-    <mat-icon>qr_code_scanner</mat-icon>
-</button> -->
 <zxing-scanner [torch]="torchEnabled" [(device)]="currentDevice" (scanSuccess)="onCodeResult($event)"
     [formats]="formatsEnabled" [tryHarder]="tryHarder" (permissionResponse)="onHasPermission($event)"
     (camerasFound)="onCamerasFound($event)" (camerasNotFound)="onCamerasNotFound($event)"
@@ -14,5 +10,3 @@
     </div>
     <button mat-icon-button (click)="clearResult()">&times;</button>
 </section>
-
-<!-- <p *ngFor="let print of _console">{{print}}</p> -->
