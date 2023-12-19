@@ -24,6 +24,8 @@
     "@auth0/angular-jwt": "^5.0.2",
     "@zxing/browser": "^0.1.4",
     "@zxing/library": "^0.20.0",
+    "primeicons": "^6.0.1",
+    "primeng": "^15.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"

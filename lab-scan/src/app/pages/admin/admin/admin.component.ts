@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
   datos: any[] = [];
-  columnas: string[] = ['noComputadora', 'tipoIdentificacion', 'nombreAlumno', 'observaciones', 'asistencia'];
+  columnas: string[] = ['noComputadora', 'tipoIdentificacion', 'nombreAlumno', 'observaciones', 'asistencia', 'actions'];
 
   constructor() { }
 
@@ -19,7 +19,7 @@ export class AdminComponent implements OnInit {
     const nombres = ["Luis Ansiola", "Pedro Barrera", "Arturo Hernandez", "Kevin Miranda", "Max Aguilar"];
     const tiposIdentificacion = ["Credencial institucional", "Permiso Sacadem", "Prorroga"];
 
-    for (let i = 1; i <= 10; i++) {
+    for (let i = 1; i <= 30; i++) {
       const fila = {
         noComputadora: this.generarNumeroUnico(30),
         tipoIdentificacion: tiposIdentificacion[i % tiposIdentificacion.length],

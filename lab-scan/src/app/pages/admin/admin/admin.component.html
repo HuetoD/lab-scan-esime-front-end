@@ -1,43 +1,122 @@
 <!-- admin1.component.html -->
 
-<table mat-table [dataSource]="datos">
+<div class="container">
 
-    <!-- Definición de columnas existentes -->
-    <!-- No. Computadora Column -->
-    <ng-container matColumnDef="noComputadora">
-      <th mat-header-cell *matHeaderCellDef>No. Computadora</th>
-      <td mat-cell *matCellDef="let elemento">{{ elemento.noComputadora }}</td>
-    </ng-container>
-  
-    <!-- Tipo de identificación Column -->
-    <ng-container matColumnDef="tipoIdentificacion">
-      <th mat-header-cell *matHeaderCellDef>Tipo de identificación</th>
-      <td mat-cell *matCellDef="let elemento">{{ elemento.tipoIdentificacion }}</td>
-    </ng-container>
-  
-    <!-- Nombre del alumno Column -->
-    <ng-container matColumnDef="nombreAlumno">
-      <th mat-header-cell *matHeaderCellDef>Nombre del alumno</th>
-      <td mat-cell *matCellDef="let elemento">{{ elemento.nombreAlumno }}</td>
-    </ng-container>
-  
-    <!-- Observaciones Column -->
-    <ng-container matColumnDef="observaciones">
-      <th mat-header-cell *matHeaderCellDef>Observaciones</th>
-      <td mat-cell *matCellDef="let elemento">{{ elemento.observaciones }}</td>
-    </ng-container>
-  
-    <!-- Asistencia Column -->
-    <ng-container matColumnDef="asistencia">
-      <th mat-header-cell *matHeaderCellDef>Asistencia</th>
-      <td mat-cell *matCellDef="let elemento">
-        <mat-checkbox [(ngModel)]="elemento.asistencia"></mat-checkbox>
-      </td>
-    </ng-container>
-  
-    <!-- Definición de filas -->
-    <tr mat-header-row *matHeaderRowDef="columnas"></tr>
-    <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
-  </table>
-  
+  <div class="header">
+    <h1>$GRUPO$</h1>
+
+    <div class="buttons">
+      <button mat-raised-button color="primary">Editar Registo</button>
+      <button mat-raised-button color="primary">Exportar</button>
+      <button mat-raised-button color="primary">Nuevo Registro</button>
+    </div>
+
+  </div>
+
+  <div class="fields">
+    <mat-form-field appearance="outline" class="second-line-element">
+      <mat-label>Semestre</mat-label>
+      <mat-select placeholder="Selecciona un semestre">
+        <mat-option value="2021-1">2021-1</mat-option>
+        <mat-option value="2021-2">2021-2</mat-option>
+        <mat-option value="2022-1">2022-1</mat-option>
+        <mat-option value="2022-2">2022-2</mat-option>
+        <mat-option value="2023-1">2023-1</mat-option>
+        <mat-option value="2023-2">2023-2</mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline" class="second-line-element">
+      <mat-label>Grupos</mat-label>
+      <mat-select placeholder="Selecciona un grupo">
+        <mat-option value="1CM11">1CM11</mat-option>
+        <mat-option value="1CV11">1CV11</mat-option>
+        <mat-option value="2CM11">2CM11</mat-option>
+        <mat-option value="2CV11">2CV11</mat-option>
+        <mat-option value="3CM11">3CM11</mat-option>
+        <mat-option value="3CV11">3CV11</mat-option>
+        <mat-option value="4CM11">4CM11</mat-option>
+        <mat-option value="4CV11">4CV11</mat-option>
+        <mat-option value="5CM11">5CM11</mat-option>
+        <mat-option value="5CV11">5CV11</mat-option>
+        <mat-option value="6CM11">6CM11</mat-option>
+        <mat-option value="6CV11">6CV11</mat-option>
+        <mat-option value="7CM11">7CM11</mat-option>
+        <mat-option value="7CV11">7CV11</mat-option>
+        <mat-option value="8CM11">8CM11</mat-option>
+        <mat-option value="8CV11">8CV11</mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline" class="second-line-element">
+      <input matInput [matDatepicker]="picker" placeholder="Selecciona una fecha">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline" class="second-line-element">
+      <input matInput placeholder="Alumnos">
+    </mat-form-field>
+  </div>
+  <div>
+
+    <h2>Profesor: $PROFESOR$</h2>
+    
+    <table mat-table [dataSource]="datos">
+      
+      <!-- Definición de columnas existentes -->
+      <!-- No. Computadora Column -->
+      <ng-container matColumnDef="noComputadora">
+        <th mat-header-cell *matHeaderCellDef>No. Computadora</th>
+        <td mat-cell *matCellDef="let elemento">{{ elemento.noComputadora }}</td>
+      </ng-container>
+      
+      <!-- Tipo de identificación Column -->
+      <ng-container matColumnDef="tipoIdentificacion">
+        <th mat-header-cell *matHeaderCellDef>Tipo de identificación</th>
+        <td mat-cell *matCellDef="let elemento">{{ elemento.tipoIdentificacion }}</td>
+      </ng-container>
+      
+      <!-- Nombre del alumno Column -->
+      <ng-container matColumnDef="nombreAlumno">
+        <th mat-header-cell *matHeaderCellDef>Nombre del alumno</th>
+        <td mat-cell *matCellDef="let elemento">{{ elemento.nombreAlumno }}</td>
+      </ng-container>
+      
+      <!-- Observaciones Column -->
+      <ng-container matColumnDef="observaciones">
+        <th mat-header-cell *matHeaderCellDef>Observaciones</th>
+        <td mat-cell *matCellDef="let elemento">{{ elemento.observaciones }}</td>
+      </ng-container>
+      
+      <!-- Asistencia Column -->
+      <ng-container matColumnDef="asistencia">
+        <th mat-header-cell *matHeaderCellDef>Asistencia</th>
+        <td mat-cell *matCellDef="let elemento">
+          <mat-checkbox [(ngModel)]="elemento.asistencia"></mat-checkbox>
+        </td>
+      </ng-container>
+      <!-- Asistencia Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Acciones</th>
+        <td mat-cell *matCellDef="let elemento">
+          <button mat-icon-button [mat-menu-trigger-for]="menu"><mat-icon>more_vert</mat-icon></button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>Editar</button>
+            <button mat-menu-item>Intercambiar</button>
+            <button mat-menu-item>Eliminar</button>
+          </mat-menu>
+        </td>
+      </ng-container>
+      
+      <!-- Definición de filas -->
+      <tr mat-header-row *matHeaderRowDef="columnas; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+    </table>
+
+    <mat-paginator aria-label="Select page of users"></mat-paginator>
+    
+  </div>
+
+</div>
   

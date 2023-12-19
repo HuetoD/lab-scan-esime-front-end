@@ -5,6 +5,7 @@ import { PUBLIC_URLS } from '@shared/constants/public-urls';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { environment } from 'src/environments/environment';
+import { MessageService } from 'primeng/api';
 
 @Injectable({
     providedIn: 'root'
@@ -13,7 +14,8 @@ export class AuthInterceptor implements HttpInterceptor {
 
     constructor(
         private readonly authService: AuthService,
-        private readonly router: Router
+        private readonly router: Router,
+        private messageService : MessageService
     ) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -25,8 +27,9 @@ export class AuthInterceptor implements HttpInterceptor {
         console.log('request: ', request)
         return next.handle(request).pipe(
             catchError((error: HttpErrorResponse) => {
-                if (error)
-                    console.log('foo( call toast )')
+                console.log(JSON.parse(error.error) )
+                if (error.error)
+                    this.messageService.add({severity: 'error', summary: JSON.parse(error.error).message, detail: JSON.parse(error.error).details})
                 return throwError(() => error)
             })
         )
