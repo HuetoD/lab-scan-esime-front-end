@@ -3,6 +3,7 @@
   grid-template-columns: repeat(2, 1fr);
   column-gap: 20px;
   align-items: end;
+  padding: 20px;
 }
 
 mat-form-field{
@@ -10,7 +11,7 @@ mat-form-field{
   width: 100%
 }
 
-.button-container, .note{
+.button-container{
   width: 100%;
   height: 100%;
 }
@@ -20,6 +21,26 @@ feature-qr-button{
 }
 
 .note{
+  padding: 10px;
   border: 1px solid red;
- 
+  p{
+    margin: 0;
+  }
+  
 }
+
+p{
+  margin-top: 0px ;
+}
+
+
+@media screen and (max-width: 480px) {
+  .grid{
+    grid-template-columns: 1fr;
+  }
+  button{
+    height: 50px;
+    margin-top: 20px;
+  }
+}
+

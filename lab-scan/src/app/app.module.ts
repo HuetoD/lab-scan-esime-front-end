@@ -16,12 +16,12 @@ import { LoaderComponent } from './features/loader/loader.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingInterceptor } from './interceptors/http.interceptor';
 
+import { ToastModule } from 'primeng/toast';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoaderComponent
-  ],
+  declarations: [AppComponent, LoaderComponent],
   imports: [
     CommonModule,
     BrowserModule,
@@ -32,13 +32,21 @@ import { LoadingInterceptor } from './interceptors/http.interceptor';
     SuperuserModule,
     AdminModule,
     GuestModule,
-    RouterModule.forRoot([]),
+    ToastModule,
   ],
   providers: [
     {
-      provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true
-    }
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+    MessageService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

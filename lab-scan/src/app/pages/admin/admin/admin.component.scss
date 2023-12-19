@@ -1,0 +1,33 @@
+.container, .fields, .buttons, .header{
+    display: flex;
+    gap: 20px;
+
+}
+
+
+.container{
+    flex-direction: column;
+    padding: 20px;
+}
+
+.fields, .buttons, .header{
+    align-items: center;
+}
+
+.header{
+    justify-content: space-between;
+}
+
+.table-container{
+    flex: 1;
+}
+
+table, h2{
+    border: 1px solid #8A8A8A;
+}
+
+h2{
+    margin: 0;
+    padding: 10px 15px;
+    border-bottom: none;
+}

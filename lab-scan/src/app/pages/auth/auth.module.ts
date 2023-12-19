@@ -25,11 +25,7 @@ import { AuthInterceptor } from "src/app/interceptors/auth.interceptor";
         MatButtonModule
     ],
     providers: [
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: AuthInterceptor,
-            multi: true,
-        }
+        
     ]
 })
 export class AuthModule {

@@ -1,41 +1,38 @@
 <form class="grid" [formGroup]="partialStudentForm" (submit)="submit()">
     <div>
-        <p>Tipo de identificación</p>
-        <mat-form-field>
+        <mat-form-field appearance="outline" >
             <mat-select #identifierSelect placeholder="ID" (selectionChange)="onIdentifierChange($event.value)">
                 <mat-option *ngFor="let identifier of identifiers" [value]="identifier">{{identifier}}</mat-option>
             </mat-select>
         </mat-form-field>
     </div>
 
-    <mat-form-field *ngIf="showSacademDate">
+    <mat-form-field appearance="outline" *ngIf="showSacademDate">
         <input matInput [matDatepicker]="picker" />
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
     <div>
-        <p>Nombre</p>
-        <mat-form-field>
+        <mat-form-field appearance="outline">
             <mat-label>Nombre completo</mat-label>
             <input matInput placeholder="Ingrese el nombre" formControlName="student_full_name" />
         </mat-form-field>
     </div>
 
-    <mat-form-field>
+    <mat-form-field appearance="outline">
         <mat-label>Número de documento ({{student.student_identification_type}})</mat-label>
         <input matInput placeholder="Ingrese su número de boleta" formControlName="student_report_number" />
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field appearance="outline">
         <mat-select placeholder="Elige el laboratorio" (selectionChange)="onLabChange($event.value)">
             <mat-option *ngFor="let lab of labs" [value]="lab">{{lab.lab_name}}</mat-option>
         </mat-select>
     </mat-form-field>
 
     <div>
-        <p>No. Computadora</p>
-        <mat-form-field>
+        <mat-form-field appearance="outline">
             <mat-label>No. Computadora</mat-label>
             <input matInput placeholder="Ingrese el número de computadora" formControlName="student_pc_number" />
         </mat-form-field>
@@ -46,8 +43,7 @@
     </div>
 
     <div>
-        <p>Grupos</p>
-        <mat-form-field>
+        <mat-form-field appearance="outline">
             <mat-chip-grid #chipList>
                 <mat-chip *ngFor="let selected of allSelectedGroups" [removable]="true"
                     (removed)="onRemoveSelectedGroup(selected)">
@@ -66,7 +62,7 @@
 
     </div>
 
-    <div class="note flex f-a-center, f-j-center">
+    <div class="note">
         <p>
             Nota: El número de computadoras asignado será el mismo para ambos
             laboratorios
