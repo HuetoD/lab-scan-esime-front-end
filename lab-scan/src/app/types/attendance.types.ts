@@ -6,7 +6,8 @@ export interface AttendanceBase extends StudentBase {
     attendance: boolean
 }
 
-export interface AttendanceResponse extends AttendanceBase {
+export interface AttendanceResponse {
+    attendances: AttendanceBase[]
     teacher_full_name: string
     group_name: string
     laboratory_name: string

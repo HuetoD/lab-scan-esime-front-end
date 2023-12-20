@@ -3,12 +3,12 @@
 <div class="container">
 
   <div class="header">
-    <h1>$GRUPO$</h1>
+    <h1>GRUPO: {{group?.group_name}}</h1>
 
     <div class="buttons">
       <button mat-raised-button color="primary">Editar Registo</button>
       <button mat-raised-button color="primary">Exportar</button>
-      <button mat-raised-button color="primary">Nuevo Registro</button>
+      <button mat-raised-button color="primary" (click)="createNewAttendances()">Nueva asistencia</button>
     </div>
 
   </div>
@@ -16,35 +16,18 @@
   <div class="fields">
     <mat-form-field appearance="outline" class="second-line-element">
       <mat-label>Semestre</mat-label>
-      <mat-select placeholder="Selecciona un semestre">
-        <mat-option value="2021-1">2021-1</mat-option>
-        <mat-option value="2021-2">2021-2</mat-option>
-        <mat-option value="2022-1">2022-1</mat-option>
-        <mat-option value="2022-2">2022-2</mat-option>
-        <mat-option value="2023-1">2023-1</mat-option>
-        <mat-option value="2023-2">2023-2</mat-option>
+      <mat-select placeholder="Selecciona un semestre" (selectionChange)="semester = $event.value">
+        <mat-option *ngFor="let semester of semesters" [value]="semester">{{semester.semester_id}}</mat-option>
       </mat-select>
     </mat-form-field>
     
     <mat-form-field appearance="outline" class="second-line-element">
       <mat-label>Grupos</mat-label>
-      <mat-select placeholder="Selecciona un grupo">
-        <mat-option value="1CM11">1CM11</mat-option>
-        <mat-option value="1CV11">1CV11</mat-option>
-        <mat-option value="2CM11">2CM11</mat-option>
-        <mat-option value="2CV11">2CV11</mat-option>
-        <mat-option value="3CM11">3CM11</mat-option>
-        <mat-option value="3CV11">3CV11</mat-option>
-        <mat-option value="4CM11">4CM11</mat-option>
-        <mat-option value="4CV11">4CV11</mat-option>
-        <mat-option value="5CM11">5CM11</mat-option>
-        <mat-option value="5CV11">5CV11</mat-option>
-        <mat-option value="6CM11">6CM11</mat-option>
-        <mat-option value="6CV11">6CV11</mat-option>
-        <mat-option value="7CM11">7CM11</mat-option>
-        <mat-option value="7CV11">7CV11</mat-option>
-        <mat-option value="8CM11">8CM11</mat-option>
-        <mat-option value="8CV11">8CV11</mat-option>
+      <mat-select placeholder="Selecciona un grupo" (selectionChange)="group = $event.value" >
+        <mat-optgroup *ngFor="let lab of labsMap | keyvalue" [label]="lab.key.lab_name">
+          <mat-option *ngIf="lab.value.length === 0" (click)="loadGroups(lab.key)" >--</mat-option>
+          <mat-option *ngFor="let group of lab.value" [value]="group">{{group.group_name.split('-')[0].trim()}}</mat-option>
+        </mat-optgroup>
       </mat-select>
     </mat-form-field>
     

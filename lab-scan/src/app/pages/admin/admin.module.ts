@@ -14,12 +14,16 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
+import { NewRegComponent } from './new-reg/new-reg.component';
+import { QrButtonComponent } from 'src/app/features/qr-button/qr-button.component';
+import { FeatureModule } from 'src/app/features/feature.module';
 
 
 @NgModule({
   declarations: [
     AdminComponent,
-    AdminisComponent
+    AdminisComponent,
+    NewRegComponent
   ],
   imports: [
     AdminRoutingModule,
@@ -34,11 +38,13 @@ import { MatButtonModule } from '@angular/material/button';
     MatSelectModule,
     MatInputModule,
     MatPaginatorModule,
-    MatButtonModule
+    MatButtonModule,
+    FeatureModule
   ],
   exports: [
     AdminComponent,
-    AdminisComponent
+    AdminisComponent,
+    NewRegComponent
   ]
 })
 export class AdminModule { }

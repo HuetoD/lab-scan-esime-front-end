@@ -7,7 +7,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { AdminService } from 'src/app/services/superuser.service';
+import { SuperUserService } from 'src/app/services/superuser.service';
 import { ModelFormGroup } from '@shared/constants';
 import { Observable, iif, tap } from 'rxjs';
 
@@ -24,7 +24,7 @@ export class TableComponent implements OnInit {
   userForm: ModelFormGroup<Omit<AdminDTO, 'admin_id'>>;
 
   constructor(
-    private readonly adminService: AdminService,
+    private readonly adminService: SuperUserService,
     private formBuilder: FormBuilder
   ) {}
 
@@ -70,8 +70,6 @@ export class TableComponent implements OnInit {
     if (this.userForm.valid) {
       this.selectedUser.email = this.control('email').value;
       this.selectedUser.password = this.control('password').value;
-      // Object.assign(this.selectedUser, this.userForm.value)
-      console.log(this.selectedUser);
       iif(
         () => this.selectedUser.admin_id === 0,
         this.addAdmin(),

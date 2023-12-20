@@ -1,0 +1,65 @@
+<div class="flex container">
+  <div class="flex header">
+    <h1>$GRUPO$</h1>
+    <div class="flex btns">
+      <button mat-raised-button color="primary" >Nuevo Registro</button>
+      <div class="flex qr">
+        <feature-qr-button />
+        <a href="">ABCD5</a>
+      </div>
+    </div>
+  </div>
+  <div class="flex fields">
+    <mat-form-field appearance="outline" class="second-line-element">
+      <mat-label>Grupo</mat-label>
+      <mat-select placeholder="Selecciona un grupo">
+        <mat-option >Si</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="second-line-element">
+      <input matInput placeholder="Alumnos">
+    </mat-form-field>
+  </div>
+
+  <table mat-table [dataSource]="dataSource">
+      
+    <!-- Definición de columnas existentes -->
+    <!-- No. Computadora Column -->
+    <ng-container matColumnDef="computer">
+      <th mat-header-cell *matHeaderCellDef>No. Computadora</th>
+      <td mat-cell *matCellDef="let elemento">{{ elemento.noComputadora }}</td>
+    </ng-container>
+    
+    <!-- Tipo de identificación Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>Tipo de identificación</th>
+      <td mat-cell *matCellDef="let elemento">{{ elemento.tipoIdentificacion }}</td>
+    </ng-container>
+    
+    <!-- Nombre del alumno Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Nombre del alumno</th>
+      <td mat-cell *matCellDef="let elemento">{{ elemento.nombreAlumno }}</td>
+    </ng-container>
+    
+    <!-- Observaciones Column -->
+    <ng-container matColumnDef="observations">
+      <th mat-header-cell *matHeaderCellDef>Observaciones</th>
+      <td mat-cell *matCellDef="let elemento">{{ elemento.observaciones }}</td>
+    </ng-container>
+    
+    <!-- Asistencia Column -->
+    <ng-container matColumnDef="attendance">
+      <th mat-header-cell *matHeaderCellDef>Asistencia</th>
+      <td mat-cell *matCellDef="let elemento">
+        <mat-checkbox [(ngModel)]="elemento.asistencia"></mat-checkbox>
+      </td>
+    </ng-container>
+
+
+    <!-- Definición de filas -->
+    <tr mat-header-row *matHeaderRowDef="columns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+  </table>
+
+</div>

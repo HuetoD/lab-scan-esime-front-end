@@ -1,0 +1,26 @@
+.btns, .container, .fields{
+    gap: 20px;
+}
+
+.container, .qr{
+    flex-direction: column;
+}
+
+.container{
+    padding: 20px;
+
+}
+
+.header{
+    justify-content: space-between;
+}
+
+.qr{
+    gap: 5px;
+    align-items: center;
+}
+
+th{
+    font-weight: bold;
+    font-size: 16px;
+ }

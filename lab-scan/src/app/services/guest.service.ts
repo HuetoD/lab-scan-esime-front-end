@@ -6,6 +6,7 @@ import { environment } from "src/environments/environment";
 import { GroupResponse } from "../types/group.types";
 import { to_local_YYYY_MM_DD } from "@shared/util/util";
 import { StudentBase, StudentRequest } from "../types/student.types";
+import { SemesterResponse } from "../types";
 
 @Injectable({ providedIn: 'root' })
 export class GuestService {
@@ -37,6 +38,10 @@ export class GuestService {
                 date: to_local_YYYY_MM_DD(date)
             }
         })
+    }
+
+    getSemesters(): Observable<SemesterResponse[]> {
+        return this.http.get<SemesterResponse[]>(`${this.API}/get-semesters`)
     }
 
     getGroupsOfTheWeek(laboratory: string, semester: number = GuestService.SEMESTER): Observable<GroupResponse[]> {

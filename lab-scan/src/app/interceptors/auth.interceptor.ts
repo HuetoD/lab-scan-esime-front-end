@@ -27,9 +27,9 @@ export class AuthInterceptor implements HttpInterceptor {
         console.log('request: ', request)
         return next.handle(request).pipe(
             catchError((error: HttpErrorResponse) => {
-                console.log(JSON.parse(error.error) )
-                if (error.error)
-                    this.messageService.add({severity: 'error', summary: JSON.parse(error.error).message, detail: JSON.parse(error.error).details})
+                const response: Error = error.error instanceof Object ? error.error : JSON.parse(error.error)
+                if (response)
+                    this.messageService.add({severity: 'error', summary: response.message, detail: response.details})
                 return throwError(() => error)
             })
         )
@@ -68,4 +68,9 @@ export class AuthInterceptor implements HttpInterceptor {
             return 'Error desconocido'
     }
 
+}
+
+interface Error {
+    message: string
+    details: string
 }
